@@ -1,10 +1,10 @@
 // Описаний в документації
 import flatpickr from 'flatpickr';
-import iziToast from "izitoast";
+import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/flatpickr.min.css';
 
-import "izitoast/dist/css/iziToast.min.css";
+import 'izitoast/dist/css/iziToast.min.css';
 
 const dateInput = document.querySelector('#datetime-picker');
 const startButton = document.querySelector('[data-start]');
@@ -46,18 +46,11 @@ startButton.addEventListener('click', event => {
   startButton.disabled = true;
   const timerId = setInterval(() => {
     const timeDifference = choosenDate - new Date();
-    const { days, hours, minutes, seconds } = convertMs(
-      timeDifference
-    );
+    const { days, hours, minutes, seconds } = convertMs(timeDifference);
     if (timeDifference <= 0) {
-      day.textContent = addLeadingZero(0);
-      hour.textContent = addLeadingZero(0);
-      min.textContent = addLeadingZero(0);
-      sec.textContent = addLeadingZero(0);
       clearInterval(timerId);
       return;
-
-    } 
+    }
     day.textContent = addLeadingZero(days);
     hour.textContent = addLeadingZero(hours);
     min.textContent = addLeadingZero(minutes);
